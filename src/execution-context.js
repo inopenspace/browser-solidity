@@ -107,6 +107,7 @@ function ExecutionContext () {
 
   this.executionContextChange = function (context, endPointUrl, cb) {
     function runPrompt () {
+      console.log('runPrompt')
       executionContext = context
       if (!endPointUrl) {
         endPointUrl = 'http://localhost:8545'
