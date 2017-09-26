@@ -126,8 +126,9 @@ module.exports = (title, content, ok, cancel) => {
   modal.innerHTML = ''
   if (content) modal.appendChild(content)
 
-  // why the flip of display here? - when this script runs it needs to turn off or on the modal - so I guess that is the reason
-  // I don't understand the next line
+  // why the flip of display here? - when this script runs it needs to turn off or on the modal - so I guess that is the reason - but it should always turn on when the script runs...
+
+  // I don't understand the next line because hide() and show() set the display - so why set it to the return val of hide() and show()?
   // container.style.display = container.style.display === 'block' ? hide() : show()
 
   // if (container.style.display === 'block') {
@@ -142,14 +143,14 @@ module.exports = (title, content, ok, cancel) => {
   function okListener () {
     console.log('OK OK OK')
     removeEventListener()
-    hide() 
+    hide()
     if (ok && ok.fn) ok.fn()
   }
 
   function cancelListener () {
-    if (cancel && cancel.fn) cancel.fn()
-    hide()
     removeEventListener()
+    hide()
+    if (cancel && cancel.fn) cancel.fn()
   }
 
   function hide () {
