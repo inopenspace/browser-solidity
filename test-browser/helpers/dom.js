@@ -9,6 +9,8 @@ function listSelectorContains (textsToFind, selector, browser, callback) {
     .elements('css selector', selector, function (warnings) {
       warnings.value.map(function (warning, index) {
         browser.elementIdText(warning.ELEMENT, function (text) {
+          console.log(text.value)
+          console.log(textsToFind[index])
           browser.assert.equal(text.value.indexOf(textsToFind[index]) !== -1, true)
           if (index === warnings.value.length - 1) {
             callback()
